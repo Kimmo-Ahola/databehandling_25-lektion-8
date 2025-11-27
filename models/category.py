@@ -9,5 +9,6 @@ class Category(Base):
     description: Mapped[str] = mapped_column(Text)
     picture: Mapped[str] = mapped_column(String(1500))
 
+
     def __repr__(self) -> str:
         return f"{self.id}, {self.categoryname}, {self.description}, {self.picture}"

@@ -1,9 +1,12 @@
 from datetime import date
-from models.base import Base, Mapped, int_pk
+
+from sqlalchemy import ForeignKey
+from models.base import Base, Mapped, int_pk, mapped_column
 
 class Order(Base):
     __tablename__ = "orders"
 
     id: Mapped[int_pk]
     order_date: Mapped[date]
-    # TODO customer id on thursday
+    
+    customer_id: Mapped[int] = mapped_column(ForeignKey("customers.id"))

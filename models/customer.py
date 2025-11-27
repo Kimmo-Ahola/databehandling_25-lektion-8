@@ -1,8 +1,9 @@
 import random
 from typing import List
 from models.base import Base, Mapped, int_pk, str_255, String, mapped_column
+from models.mixin import TimestampMixin, SoftDeletionMixin
 
-class Customer(Base):
+class Customer(SoftDeletionMixin, TimestampMixin, Base):
     __tablename__ = "customers"
 
     id: Mapped[int_pk]

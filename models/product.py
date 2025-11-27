@@ -1,4 +1,4 @@
-from sqlalchemy import DECIMAL, Boolean
+from sqlalchemy import DECIMAL, Boolean, ForeignKey
 from models.base import Base, int_pk, Mapped, str_255, mapped_column
 
 
@@ -9,3 +9,6 @@ class Product(Base):
     product_name: Mapped[str_255]
     unit_price: Mapped[float] = mapped_column(DECIMAL(10, 2))
     discontinued: Mapped[bool] = mapped_column(Boolean, default=False)
+
+    # Add foreign key to category
+    category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"))
